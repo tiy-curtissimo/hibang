@@ -1,0 +1,27 @@
+debug: true
+
+security:
+  oauth2:
+    client:
+      accessTokenUri: http://localhost:9999/auth/oauth/token
+      userAuthorizationUri: http://localhost:9999/auth/oauth/authorize
+      clientId: tiy
+      clientSecret: exquisite-dead-guy
+    resource:
+      userInfoUri: http://localhost:9999/auth/user
+  user:
+    password: password
+
+zuul:
+  routes:
+    resource:
+      path: /resources/**
+      url: http://localhost:9000
+    user:
+      path: /user/**
+      url: http://localhost:9999/auth/user
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
