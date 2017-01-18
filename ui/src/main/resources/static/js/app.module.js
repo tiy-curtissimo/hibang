@@ -39,28 +39,30 @@
 	  }
 	};
 
-	var form = document.getElementById('add-book');
-	form.addEventListener('submit', function (e) {
-		e.preventDefault();
-		var xhr = new XMLHttpRequest();
-		xhr.addEventListener('load', function () {
-			if (this.status >= 400) {
-				return location.href = '/login';
+	var forms = Array.from(document.getElementsByTagName('form'));
+	forms.forEach(function (form) {
+		form.addEventListener('submit', function (e) {
+			e.preventDefault();
+			var xhr = new XMLHttpRequest();
+			xhr.addEventListener('load', function () {
+				if (this.status >= 400) {
+					return location.href = '/login';
+				}
+				console.log(this.responseText);
+			});
+			xhr.addEventListener('error', function () {
+				location.href = '/login';
+			});
+			xhr.open(this.method, this.action, true);
+			xhr.withCredentials = true;
+			if (docCookies.getItem('XSRF-TOKEN')) {
+				xhr.setRequestHeader('X-XSRF-TOKEN', docCookies.getItem('XSRF-TOKEN'));
 			}
-			console.log(this.responseText);
+			xhr.setRequestHeader('Authorization', 'Basic ' + btoa('user:password'));
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+			xhr.setRequestHeader('Accept', 'application/json');
+			xhr.send('{}');
 		});
-		xhr.addEventListener('error', function () {
-			location.href = '/login';
-		});
-		xhr.open(this.method, this.action, true);
-		xhr.withCredentials = true;
-		if (docCookies.getItem('XSRF-TOKEN')) {
-			xhr.setRequestHeader('X-XSRF-TOKEN', docCookies.getItem('XSRF-TOKEN'));
-		}
-		xhr.setRequestHeader('Authorization', 'Basic ' + btoa('user:password'));
-		xhr.setRequestHeader('Content-Type', 'application/json');
-		xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-		xhr.setRequestHeader('Accept', 'application/json');
-		xhr.send('{}');
 	});
 })();
