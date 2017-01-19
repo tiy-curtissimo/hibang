@@ -1,5 +1,6 @@
 package com.theironyard.fullstack.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.theironyard.fullstack.dtos.BookDto;
 import com.theironyard.fullstack.models.Book;
 import com.theironyard.fullstack.persistence.BookDao;
 
@@ -29,8 +31,12 @@ public class BooksController {
 	}
 	
 	@GET
-	public List<Book> getAll() {
-		return this.bookDao.findAll();
+	public List<BookDto> getAll() {
+		List<BookDto> authors = new ArrayList<BookDto>();
+		for (Book book : this.bookDao.findAll()) {
+			authors.add(new BookDto(book));
+		}
+		return authors;
 	}
 	
 	@POST

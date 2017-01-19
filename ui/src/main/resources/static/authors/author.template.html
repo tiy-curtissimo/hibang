@@ -1,0 +1,4 @@
+<h4 class="text-center">{{author.author.name}}</h4>
+<div class="book-list">
+	<book-tile ng-repeat="book in author.author.books | orderBy:'title' | filter:titleSearch:'title' track by book.id" book="book" ng-hide="!showHidden && catalog.isBookInCart(book)"></book-tile>
+</div>

@@ -3,11 +3,11 @@
 		.module('catalog')
 		.component('catalog', {
 			templateUrl: 'catalog/catalog.template.html',
-			controller: ['$http', 'Book', 'Cart', CatalogController],
+			controller: ['Book', 'Cart', CatalogController],
 			controllerAs: 'catalog'
 		});
 	
-	function CatalogController($http, Book, Cart) {
+	function CatalogController(Book, Cart) {
 		var catalog = this;
 		var books = Book.query(function () {
 			catalog.books = books;

@@ -10,6 +10,6 @@
 			'navigation',
 			'cart',
 			'catalog',
-			'staff'
+			'authors'
 		]);
 })();

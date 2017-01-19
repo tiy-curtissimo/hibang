@@ -1,11 +1,16 @@
 <div class="card book-card">
-	<header class="card-section book-card-title">
+	<header class="card-section book-card-title" ng-if="bookTile.book.author">
 		<div class="book-card-title-name">{{bookTile.book.author.name}}</div>
 		<div class="book-card-title-action" ng-if="!bookTile.isInCart">
 			<a ng-click="bookTile.addToCart(bookTile.book.id)" class="button tiny book-card-title-action-button">+</a>
 		</div>
 	</header>
-	<div class="card-divider">{{bookTile.book.title}}</div>
+	<div class="card-divider book-card-title">
+		<div class="book-card-title-name">{{bookTile.book.title}}</div>
+		<div class="book-card-title-action" ng-if="!(bookTile.book.author || bookTile.isInCart)">
+			<a ng-click="bookTile.addToCart(bookTile.book.id)" class="button tiny book-card-title-action-button">+</a>
+		</div>
+	</div>
 	<div class="book-card-content">
 		<img ng-src="{{bookTile.book.smallImageUrl}}" class="book-card-small-image">
 		<div class="card-section">

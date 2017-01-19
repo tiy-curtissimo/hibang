@@ -18,8 +18,8 @@ create table book (
   author_id int references author (id)
 );
 
-copy author from '«pwd»/authors.tab' with null as '';
-copy book from '«pwd»/books.tab' with null as '';
+copy author from '/Users/curtis/dev/eclipse/hibang/sql/authors.tab' with null as '';
+copy book from '/Users/curtis/dev/eclipse/hibang/sql/books.tab' with null as '';
 
 SELECT setval('book_id_seq', (SELECT MAX(id) FROM book));
 SELECT setval('author_id_seq', (SELECT MAX(id) FROM author));
