@@ -1,0 +1,84 @@
+book-tile {
+	transition: all linear 0.5s;
+}
+
+book-tile.ng-leave,
+book-tile.ng-move.ng-move-active,
+book-tile.ng-enter.ng-enter-active {
+	opacity: 1;
+}
+
+book-tile.ng-leave.ng-leave-active,
+book-tile.ng-move,
+book-tile.ng-enter {
+	opacity: 0;
+}
+
+book-tile.ng-hide {
+	opacity: 0 !important;
+}
+
+.menu .active {
+	background-color: #1779ba;
+	color: white; 
+}
+
+.book-list-filters {
+	padding: 16px;
+	display: flex;
+}
+
+.book-list-filters-label {
+	padding-right: 8px;
+}
+
+.book-list-filters-show-hidden,
+.book-list-filters-search {
+	display: flex;
+	align-items: center;
+}
+
+.book-list-filters-search {
+	flex: 1 0 0px;
+	justify-content: flex-end;
+}
+
+.book-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.book-card {
+	display: inline-block;
+	width: 350px;
+	margin: 12px;
+}
+
+.book-card-small-image {
+	margin-right: 8px;
+	height: 128px;
+	width: auto;
+}
+
+.book-card-content {
+	display: flex;
+}
+
+.book-card-content .card-section {
+	flex: 1 0 0px;
+}
+
+.book-card-title {
+	display: flex;
+	align-items: center;
+}
+
+.book-card-title-name {
+	flex: 1 0 0px;
+}
+
+.book-card-title-action-button,
+.cart-list-action-button {
+	margin-bottom: 0;
+}

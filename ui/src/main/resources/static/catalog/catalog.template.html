@@ -1,0 +1,22 @@
+<div class="book-list-filters">
+	<div class="book-list-filters-show-hidden">
+		<p class="book-list-filters-label"><label for="show-hidden">Show books in cart?</label></p>
+		<div class="switch">
+			<input class="switch-input" id="show-hidden" type="checkbox" ng-model="showHidden">
+			<label class="switch-paddle" for="show-hidden">
+				<span class="show-for-sr">Show books in cart</span>
+				<span class="switch-active" aria-hidden="true">Yes</span>
+				<span class="switch-inactive" aria-hidden="true">No</span>
+			</label>
+		</div>
+	</div>
+	<div class="book-list-filters-search">
+		<p class="book-list-filters-label"><label for="search-titles">Search titles:</label></p>
+		<div class="book-list-filters-input">
+			<input type="search" ng-model="titleSearch" id="search-titles">
+		</div>
+	</div>
+</div>
+<div class="book-list">
+	<book-tile ng-repeat="book in catalog.books | orderBy:'title' | filter:titleSearch:'title' track by book.id" book="book" ng-hide="!showHidden && catalog.isBookInCart(book)"></book-tile>
+</div>

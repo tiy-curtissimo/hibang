@@ -1,0 +1,18 @@
+<div class="card book-card">
+	<header class="card-section book-card-title">
+		<div class="book-card-title-name">{{bookTile.book.author.name}}</div>
+		<div class="book-card-title-action" ng-if="!bookTile.isInCart">
+			<a ng-click="bookTile.addToCart(bookTile.book.id)" class="button tiny book-card-title-action-button">+</a>
+		</div>
+	</header>
+	<div class="card-divider">{{bookTile.book.title}}</div>
+	<div class="book-card-content">
+		<img ng-src="{{bookTile.book.smallImageUrl}}" class="book-card-small-image">
+		<div class="card-section">
+			<div ng-show="bookTile.book.isbn">ISBN: {{bookTile.book.isbn}}</div>
+			<div ng-show="bookTile.book.isbn13">ISBN13: {{bookTile.book.isbn13}}</div>
+			<div ng-show="bookTile.book.pubYear">Published in: {{bookTile.book.pubYear}}</div>
+			<div ng-show="bookTile.book.numPages">Number of pages: {{bookTile.book.numPages}}</div>
+		</div>
+	</div>
+</div>

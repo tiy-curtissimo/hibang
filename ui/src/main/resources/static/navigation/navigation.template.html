@@ -1,0 +1,17 @@
+<div class="top-bar">
+	<div class="top-bar-title">
+		<strong>hi!</strong> <em>h&#299;&middot;b&#257;ng</em>
+	</div>
+	<div class="top-bar-left">
+		<ul class="menu">
+			<li><a ui-sref="catalog" ui-sref-active="active">Books</a></li>
+			<li><a ui-sref="staff" ui-sref-active="active">Librarians</a></li>
+	     	<li ng-if="navigation.cartItemsCount"><a ui-sref="cart" ui-sref-active="active">Cart ({{navigation.cartItemsCount}})</a></li>
+		</ul>
+  	</div>
+	 <div class="top-bar-right">
+	   <ul class="menu">
+	     <li><a href="login" class="button secondary">Login</a></li>
+	   </ul>
+	 </div>
+</div>

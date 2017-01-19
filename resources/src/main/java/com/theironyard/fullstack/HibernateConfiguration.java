@@ -17,7 +17,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 @Configuration
 @EnableJpaRepositories(basePackages="com.theironyard.fullstack.persistence")
-public class SqlConfiguration {
+public class HibernateConfiguration {
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();

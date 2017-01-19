@@ -2,15 +2,33 @@
 <html>
 	<head>
 		<title>hi!</title>
-		<base href="/">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css">
+		<link rel="stylesheet" href="app.css">
 	</head>
-	<body>
-		<form method="get" action="/resources/books" id="get-books">
-			<button type="submit">Test resources fetch.</button>
-		</form>
-		<form method="post" action="/resources/books" id="add-book">
-			<button type="submit">Test resource creation.</button>
-		</form>
+	<body ng-app="hibang">
+		<navigation></navigation>
+		<ui-view></ui-view>
 	</body>
-	<script src="js/app.module.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/js/foundation.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js"></script>
+	<script src="data-services/book/book.module.js"></script>
+	<script src="data-services/book/book.service.js"></script>
+	<script src="data-services/cart/cart.module.js"></script>
+	<script src="data-services/cart/cart.service.js"></script>
+	<script src="data-services/data-services.module.js"></script>
+	<script src="navigation/navigation.module.js"></script>
+	<script src="navigation/navigation.component.js"></script>
+	<script src="catalog/catalog.module.js"></script>
+	<script src="catalog/catalog.component.js"></script>
+	<script src="catalog/book-tile.component.js"></script>
+	<script src="staff/staff.module.js"></script>
+	<script src="staff/staff.component.js"></script>
+	<script src="cart/cart.module.js"></script>
+	<script src="cart/cart.component.js"></script>
+	<script src="app.module.js"></script>
+	<script src="app.config.js"></script>
 </html>

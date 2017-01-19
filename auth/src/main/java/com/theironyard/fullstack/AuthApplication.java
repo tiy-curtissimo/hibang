@@ -52,11 +52,16 @@ public class AuthApplication extends WebMvcConfigurerAdapter {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http
-				.formLogin().loginPage("/login").permitAll()
-			.and()
-				.requestMatchers().antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access")
-			.and()
-				.authorizeRequests().anyRequest().authenticated();
+				.formLogin()
+					.loginPage("/login")
+					.permitAll()
+					.and()
+				.requestMatchers()
+					.antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access")
+					.and()
+				.authorizeRequests()
+					.anyRequest()
+					.authenticated();
 		}
 		
 		@Override

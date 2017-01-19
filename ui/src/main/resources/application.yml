@@ -1,5 +1,3 @@
-debug: true
-
 security:
   oauth2:
     client:
@@ -15,6 +13,7 @@ security:
 zuul:
   routes:
     resource:
+      sensitive-headers:
       path: /resources/**
       url: http://localhost:9000
     user:
@@ -23,5 +22,4 @@ zuul:
 
 logging:
   level:
-    org.springframework.security: DEBUG
     org.springframework.web: DEBUG
