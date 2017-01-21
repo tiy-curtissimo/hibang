@@ -6,12 +6,16 @@
 		<ul class="menu">
 			<li><a ui-sref="catalog" ui-sref-active="active">Books</a></li>
 			<li><a ui-sref="authors" ui-sref-active="active">Authors</a></li>
-	     	<li ng-if="navigation.cartItemsCount"><a ui-sref="cart" ui-sref-active="active">Cart ({{navigation.cartItemsCount}})</a></li>
+	     	<li ng-if="navigation.cartItemsCount && navigation.borrower"><a ui-sref="cart" ui-sref-active="active">Cart ({{navigation.cartItemsCount}})</a></li>
 		</ul>
   	</div>
 	 <div class="top-bar-right">
-	   <ul class="menu">
-	     <li><a href="login" class="button secondary">Login</a></li>
+	   <ul class="menu" ng-if="!navigation.borrower">
+	     <li><a ui-sref="login" ui-sref-active="hibang-gone" class="button secondary">Login</a></li>
+	     <li><a ui-sref="signup" ui-sref-active="hibang-gone" class="button primary">Sign Up</a></li>
+	   </ul>
+	   <ul class="menu" ng-if="navigation.borrower">
+	     <li><a ng-click="navigation.logout()" class="button secondary">Logout {{navigation.borrower.firstName}}</a></li>
 	   </ul>
 	 </div>
 </div>

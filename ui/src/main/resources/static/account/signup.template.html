@@ -1,0 +1,21 @@
+<h4 class="text-center">Sign up to borrow</h4>
+<form name="signupForm" ng-submit="signup.createBorrower()" method="post" data-endpoint="/resources/borrowers" novalidate>
+	<div class="medium-offset-3 medium-6 columns">
+		<label>First name <em ng-show="signupForm.firstName.$invalid && !signupForm.firstName.$pristine">required, please.</em>
+			<input name="firstName" type="text" placeholder="Ibrahim" ng-model="signup.borrower.firstName" required autofocus>
+		</label>
+		<label>Last name <em ng-show="signupForm.lastName.$invalid && !signupForm.lastName.$pristine">also required, please</em>
+			<input name="lastName" type="text" placeholder="Gonzalez" ng-model="signup.borrower.lastName" required>
+		</label>
+		<label>Email <em ng-show="signupForm.email.$invalid && !signupForm.email.$pristine && !signupForm.email.$error.invalidemail">doesn't look valid</em>
+			<input name="email" type="email" placeholder="igonzo@example.com" ng-model="signup.borrower.email" required>
+		</label>
+		<label>Password <em ng-show="signupForm.password.$invalid && !signupForm.password.$pristine">is your secret that you should share</em>
+			<input name="password" type="password" placeholder="********" ng-model="signup.borrower.password" required>
+		</label>
+		<div ng-if="signup.error" class="callout alert">That didn't work. Please try a different email address.</div>
+		<div>
+			<button class="button primary" ng-disabled="signupForm.$invalid">Sign up!</button>
+		</div>
+	</div>
+</form>

@@ -1,5 +1,5 @@
 (function () {
-	angular.module('catalog', [
+	angular.module('account', [
 		'ui.router',
 		'dataServices'
 	]);

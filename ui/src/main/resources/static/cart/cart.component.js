@@ -3,13 +3,18 @@
 		.module('cart')
 		.component('cart', {
 			templateUrl: 'cart/cart.template.html',
-			controller: ['$scope', 'Cart', 'Book', CartController],
-			controllerAs: 'cart'
+			controller: ['Cart', 'Book', 'Borrower', CartController],
+			controllerAs: 'cart',
+			bindings: {
+				borrower: '<'
+			}
 		});
 	
-	function CartController($scope, Cart, Book) {
+	function CartController(Cart, Book, Borrower) {
 		var cart = this;
-
+		
+		Borrower.bind(this, 'borrower');
+		
 		cart.realizeCart = function realizeCart() {
 			var cartContents = Cart.cartContents();
 			var books = Book.query(function () {

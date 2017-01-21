@@ -1,0 +1,15 @@
+<h4 class="text-center">Let's get you borrowing!</h4>
+<form name="loginForm" ng-submit="login.authenticateBorrower()" method="post" data-endpoint="/resources/borrowers" novalidate>
+	<div class="medium-offset-3 medium-6 columns">
+		<label>Email <em ng-show="loginForm.email.$invalid && !loginForm.email.$pristine && !loginForm.email.$error.invalidemail">doesn't look valid</em>
+			<input name="email" type="email" placeholder="igonzo@example.com" ng-model="login.borrower.email" required autofocus ng-focus="login.error">
+		</label>
+		<label>Password <em ng-show="loginForm.password.$invalid && !loginForm.password.$pristine">is your secret that you should share</em>
+			<input name="password" type="password" placeholder="********" ng-model="login.borrower.password" required>
+		</label>
+		<div ng-if="login.error" class="callout alert">That didn't work. Please check that you provided the correct email and password.</div>
+		<div>
+			<button class="button primary" ng-disabled="loginForm.$invalid">Log in!</button>
+		</div>
+	</div>
+</form>

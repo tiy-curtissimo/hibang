@@ -2,8 +2,7 @@ package com.theironyard.fullstack;
 
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
-import com.theironyard.fullstack.controllers.BooksController;
-import com.theironyard.fullstack.controllers.AuthorsController;
+import com.theironyard.fullstack.controllers.*;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
@@ -15,5 +14,6 @@ public class JerseyResourceConfig extends ResourceConfig {
 		this.property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, true);
 		this.register(BooksController.class);
 		this.register(AuthorsController.class);
+		this.register(BorrowersController.class);
 	}
 }

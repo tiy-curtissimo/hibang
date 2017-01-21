@@ -1,13 +1,15 @@
 <div class="card book-card">
 	<header class="card-section book-card-title" ng-if="bookTile.book.author">
 		<div class="book-card-title-name">{{bookTile.book.author.name}}</div>
-		<div class="book-card-title-action" ng-if="!bookTile.isInCart">
+		<div class="book-card-title-action" ng-if="!bookTile.isInCart && bookTile.borrower">
 			<a ng-click="bookTile.addToCart(bookTile.book.id)" class="button tiny book-card-title-action-button">+</a>
 		</div>
 	</header>
 	<div class="card-divider book-card-title">
-		<div class="book-card-title-name">{{bookTile.book.title}}</div>
-		<div class="book-card-title-action" ng-if="!(bookTile.book.author || bookTile.isInCart)">
+		<div class="book-card-title-name">
+			<a ui-sref="book({catalogId: bookTile.book.id})">{{bookTile.book.title}}</a>
+		</div>
+		<div class="book-card-title-action" ng-if="!(bookTile.book.author || bookTile.isInCart) && bookTile.borrower">
 			<a ng-click="bookTile.addToCart(bookTile.book.id)" class="button tiny book-card-title-action-button">+</a>
 		</div>
 	</div>

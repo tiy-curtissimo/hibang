@@ -1,15 +1,15 @@
 (function () {
 	angular
 		.module('dataServices.cart')
-		.factory('Cart', ['$resource', '$window', '$exceptionHandler', '$rootScope', cartServiceFactory]);
+		.factory('Cart', ['$resource', 'localStorage', '$rootScope', cartServiceFactory]);
 	
-	function cartServiceFactory($resource, $window, $exceptionHandler, $rootScope) {
-		return new CartService($resource, $window, $exceptionHandler, $rootScope);
+	function cartServiceFactory($resource, localStorage, $rootScope) {
+		return new CartService($resource, localStorage, $rootScope);
 	}
 	
-	function CartService($resource, $window, $exceptionHandler, $rootScope) {
+	function CartService($resource, localStorage, $rootScope) {
 		this.currentCart = [];
-		this.storage = $window.localStorage;
+		this.storage = localStorage;
 		this.scope = $rootScope;
 		try {
 			var cart = this.storage.getItem('cart');
@@ -23,6 +23,11 @@
 		return this.currentCart.slice(0);
 	};
 	
+	CartService.prototype.clear = function () {
+		this.currentCart = [];
+		this.serializeCart();
+	};
+	
 	CartService.prototype.subscribe = function (scope, callback) {
 		var handler = this.scope.$on('cart-changed', callback);
 		scope.$on('$destroy', handler);
@@ -30,8 +35,7 @@
 	
 	CartService.prototype.add = function (id) {
 		this.currentCart.push(id);
-		this.storage.setItem('cart', angular.toJson(this.currentCart));
-		this.scope.$emit('cart-changed');
+		this.serializeCart();
 	};
 	
 	CartService.prototype.remove = function (id) {
@@ -39,9 +43,13 @@
 		console.log(index, id);
 		if (index > -1) {
 			this.currentCart.splice(index, 1);
-			this.storage.setItem('cart', angular.toJson(this.currentCart));
-			this.scope.$emit('cart-changed');
+			this.serializeCart();
 		}
+	};
+	
+	CartService.prototype.serializeCart = function (id) {
+		this.storage.setItem('cart', angular.toJson(this.currentCart));
+		this.scope.$emit('cart-changed');
 	};
 	
 	CartService.prototype.isInCart = function (id) {

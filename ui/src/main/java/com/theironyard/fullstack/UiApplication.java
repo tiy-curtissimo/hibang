@@ -22,6 +22,8 @@ public class UiApplication extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/resources/**").permitAll()
+				.antMatchers(HttpMethod.POST, "/resources/borrowers").permitAll()
+				.antMatchers(HttpMethod.PUT, "/resources/borrowers/me").permitAll()
 				.antMatchers("/", "/*.html", "/*.js", "/*.css", "/**/*.html", "/**/*.js").permitAll()
 				.anyRequest().authenticated()
 				.and()

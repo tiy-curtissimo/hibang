@@ -7,9 +7,10 @@
 		.module('hibang', [
 			'ngAnimate',
 			'ui.router',
+			'account',
+			'authors',
 			'navigation',
 			'cart',
-			'catalog',
-			'authors'
+			'catalog'
 		]);
 })();

@@ -1,9 +1,9 @@
 (function () {
 	angular
 		.module('dataServices.book')
-		.factory('Book', ['$resource', BookService]);
+		.factory('Book', ['$resource', bookService]);
 	
-	function BookService($resource) {
+	function bookService($resource) {
 		return $resource('resources/books/:bookId', {}, {});
 	}
 })();

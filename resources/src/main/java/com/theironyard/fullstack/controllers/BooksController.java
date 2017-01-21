@@ -8,12 +8,14 @@ import javax.transaction.Transactional;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.theironyard.fullstack.dtos.AuthorDto;
 import com.theironyard.fullstack.dtos.BookDto;
 import com.theironyard.fullstack.models.Book;
 import com.theironyard.fullstack.persistence.BookDao;
@@ -37,6 +39,12 @@ public class BooksController {
 			authors.add(new BookDto(book));
 		}
 		return authors;
+	}
+	
+	@GET
+	@Path(value="/{id}")
+	public BookDto getAll(@PathParam("id") Long id) {
+		return new BookDto(this.bookDao.findOne(id));
 	}
 	
 	@POST

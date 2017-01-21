@@ -2,8 +2,9 @@
 	<h2>Cart</h2>
 	<p ng-if="!cart.books.length"><strong>Your cart is empty.</strong></p>
 	<p ng-if="!cart.books.length">Go <a ui-sref="catalog">browse the books</a> to add items to your cart.</p>
+	<p ng-if="!cart.borrower">Please <a ui-sref="login">login</a> if you'd like to see your cart.</p>
 </div>
-<table class="table cart-list" ng-if="cart.books.length">
+<table class="table cart-list" ng-if="cart.books.length && cart.borrower">
 	<tr>
 		<th>Title</th>
 		<th>Author</th>
@@ -12,7 +13,7 @@
 	</tr>
 	<tr ng-repeat="book in cart.books | orderBy:'author.name'">
 		<td>{{book.title}}</td>
-		<td>{{book.author.name}}</td>
+		<td><a ui-sref="author({ authorId: book.author.id })">{{book.author.name}}</a></td>
 		<td class="text-center">{{book.isbn}}</td>
 		<td class="text-center"><a ng-click="cart.removeBook(book)" class="button cart-list-action-button">-</a>
 	</tr>

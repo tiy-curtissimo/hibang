@@ -1,9 +1,9 @@
 (function () {
 	angular
 		.module('dataServices.author')
-		.factory('Author', ['$resource', AuthorService]);
+		.factory('Author', ['$resource', authorService]);
 	
-	function AuthorService($resource) {
+	function authorService($resource) {
 		return $resource('resources/authors/:authorId', {}, {});
 	}
 })();

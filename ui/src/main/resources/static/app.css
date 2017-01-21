@@ -1,3 +1,10 @@
+input[type="email"][required],
+input[type="text"][required],
+input[type="password"][required] {
+	box-sizing: border-box;
+	border-left-width: 4px;
+}
+
 book-tile {
 	transition: all linear 0.5s;
 }
@@ -16,6 +23,18 @@ book-tile.ng-enter {
 
 book-tile.ng-hide {
 	opacity: 0 !important;
+}
+
+.ng-dirty.ng-invalid {
+	border-left-color: red;
+}
+
+.hibang-hidden {
+	display: none !important;
+}
+
+.hibang-gone {
+	visibility: hidden !important;
 }
 
 .menu .active {

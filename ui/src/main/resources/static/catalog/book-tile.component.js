@@ -3,15 +3,17 @@
 		.module('catalog')
 		.component('bookTile', {
 			templateUrl: 'catalog/book-tile.template.html',
-			controller: ['Cart', BookTileController],
+			controller: ['Cart', 'Borrower', BookTileController],
 			controllerAs: 'bookTile',
 			bindings: {
-				book: '<'
+				book: '<',
+				borrower: '<'
 			}
 		});
 	
-	function BookTileController(Cart) {
+	function BookTileController(Cart, Borrower) {
 		var tile = this;
+		Borrower.bind(this, 'borrower');
 		
 		tile.isInCart = Cart.isInCart(this.book.id);
 		

@@ -1,3 +1,6 @@
 (function () {
-	angular.module('dataServices.cart', ['ngResource']);
+	angular.module('dataServices.cart', [
+		'ngResource',
+		'utils'
+	]);
 })();
