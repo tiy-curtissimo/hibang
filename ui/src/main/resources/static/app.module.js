@@ -12,7 +12,7 @@
 		.run(['$transitions', '$timeout', function($transitions, $timeout) {
 			$timeout(function () {
 				$(document).foundation();
-			}, 10, false);
+			}, 250, false);
 			$transitions.onFinish({}, function () {
 				$("ui-view").foundation();
 			});
