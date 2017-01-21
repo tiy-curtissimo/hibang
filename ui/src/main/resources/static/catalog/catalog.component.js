@@ -18,7 +18,7 @@
 			catalog.books = books;
 		});
 		catalog.isBookInCart = function (book) {
-			return Cart.isInCart(book.id);
+			return book && Cart.isInCart(book.id);
 		};
 	}
 })();
