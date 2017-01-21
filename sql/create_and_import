@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+CWD="$(pwd)"
+read -r -d '' CONTENT <<EOF
 drop table if exists checkout_items;
 drop table if exists checkout;
 drop table if exists book;
@@ -16,9 +20,11 @@ create table book (
   title varchar(200),
   image_url varchar(200),
   small_image_url varchar(200),
+  large_image_url varchar(200),
   num_pages int,
   pub_year int,
-  author_id int references author (id)
+  author_id int references author (id),
+  description text
 );
 
 create table borrower (
@@ -41,8 +47,12 @@ create table checkout_items (
   borrower_id int not null references borrower (id)
 );
 
-copy author from '/Users/curtis/dev/eclipse/hibang/sql/authors.tab' with null as '';
-copy book from '/Users/curtis/dev/eclipse/hibang/sql/books.tab' with null as '';
+copy author from '$PWD/authors.tab' with null as '';
+copy book from '$PWD/books.tab' with null as '';
 
 SELECT setval('book_id_seq', (SELECT MAX(id) FROM book));
 SELECT setval('author_id_seq', (SELECT MAX(id) FROM author));
+EOF
+
+echo "$CONTENT" | psql -U hibang hibang
+
