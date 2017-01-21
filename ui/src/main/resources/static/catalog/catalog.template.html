@@ -1,5 +1,5 @@
 <div class="book-list-filters">
-	<div class="book-list-filters-show-hidden">
+	<div class="book-list-filters-show-hidden" ng-if="catalog.borrower">
 		<p class="book-list-filters-label"><label for="show-hidden">Show books in cart?</label></p>
 		<div class="switch">
 			<input class="switch-input" id="show-hidden" type="checkbox" ng-model="showHidden">

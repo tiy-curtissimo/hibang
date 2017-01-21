@@ -1,8 +1,4 @@
 (function () {
-	function foo() {
-		console.error.apply(console, arguments);
-	}
-	$(document).foundation();
 	angular
 		.module('hibang', [
 			'ngAnimate',
@@ -12,5 +8,13 @@
 			'navigation',
 			'cart',
 			'catalog'
-		]);
+		])
+		.run(['$transitions', '$timeout', function($transitions, $timeout) {
+			$timeout(function () {
+				$(document).foundation();
+			}, 10, false);
+			$transitions.onFinish({}, function () {
+				$("ui-view").foundation();
+			});
+		}]);
 })();

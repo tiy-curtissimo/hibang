@@ -3,12 +3,17 @@
 		.module('catalog')
 		.component('catalog', {
 			templateUrl: 'catalog/catalog.template.html',
-			controller: ['Book', 'Cart', CatalogController],
-			controllerAs: 'catalog'
+			controller: ['Book', 'Cart', 'Borrower', CatalogController],
+			controllerAs: 'catalog',
+			bindings: {
+				borrower: '<'
+			}
 		});
 	
-	function CatalogController(Book, Cart) {
+	function CatalogController(Book, Cart, Borrower) {
 		var catalog = this;
+		
+		Borrower.bind(catalog, 'borrower');
 		var books = Book.query(function () {
 			catalog.books = books;
 		});
